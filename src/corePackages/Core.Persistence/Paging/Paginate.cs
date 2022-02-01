@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Persistence.Paging
 {
+    //
     public class Paginate<T> : IPaginate<T>
     {
         internal Paginate(IEnumerable<T> source, int index, int size, int from)
