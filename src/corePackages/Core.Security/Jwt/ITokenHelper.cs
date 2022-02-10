@@ -1,4 +1,6 @@
-﻿namespace Core.Security.Jwt
+﻿using Core.Security.Entities;
+
+namespace Core.Security.Jwt
 {
     public interface ITokenHelper
     {

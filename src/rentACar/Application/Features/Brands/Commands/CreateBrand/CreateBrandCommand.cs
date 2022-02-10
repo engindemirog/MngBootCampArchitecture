@@ -1,6 +1,7 @@
 ﻿using Application.Features.Brands.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Validation;
 using Core.Mailing;
 using Domain.Entities;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Brands.Commands.CreateBrand
 {
-    public class CreateBrandCommand : IRequest<Brand>
+    public class CreateBrandCommand : IRequest<Brand>,ILoggableRequest
     {
         public string Name { get; set; }
 
@@ -48,7 +49,7 @@ namespace Application.Features.Brands.Commands.CreateBrand
                   HtmlBody ="Hey, check the system"
                 };
 
-                _mailService.SendMail(mail);
+                //_mailService.SendMail(mail);
 
                 return createdBrand;
             }

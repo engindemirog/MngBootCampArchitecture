@@ -60,5 +60,7 @@ namespace Core.Security.Jwt
 
             return claims;
         }
+
+       
     }
 }
