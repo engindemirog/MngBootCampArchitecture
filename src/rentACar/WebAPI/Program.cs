@@ -23,6 +23,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 //builder.Services.AddDistributedMemoryCache();
 //builder.Services.AddStackExchangeRedisCache(options=>options.Configuration="localhost:6379");
 
+
 builder.Services.Configure<CacheSettings>(builder.Configuration.GetSection("CacheSettings"));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
