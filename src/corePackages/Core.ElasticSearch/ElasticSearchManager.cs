@@ -1,5 +1,32 @@
-﻿namespace Core.ElasticSearch
+﻿using Core.ElasticSearch.Models;
+using Elasticsearch.Net;
+using Microsoft.Extensions.Configuration;
+using Nest;
+using Nest.JsonNetSerializer;
+using Newtonsoft.Json;
+
+namespace Core.ElasticSearch
 {
+    public interface IResult
+    {
+        bool Success { get; }
+        string Message { get; }
+    }
+
+    public class Result : IResult
+    {
+        public Result(bool success, string message) : this(success)
+        {
+            Message = message;
+        }
+
+        public Result(bool success)
+        {
+            Success = success;
+        }
+        public bool Success { get; set; }
+        public string Message { get; set; }
+    }
     public class ElasticSearchManager : IElasticSearch
     {
         private readonly ConnectionSettings _connectionSettings;
@@ -48,7 +75,7 @@
 
         public async Task<List<ElasticSearchGetModel<T>>> GetAllSearch<T>(SearchParameters parameters)
             where T : class
-        {
+        {  
             var type = typeof(T);
 
             var elasticClient = GetElasticClient(parameters.IndexName);

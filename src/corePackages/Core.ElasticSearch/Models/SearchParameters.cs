@@ -13,3 +13,4 @@ namespace Core.ElasticSearch.Models
         public int Size { get; set; } = 10;
     }
 }
+
